@@ -28,7 +28,12 @@ namespace Facturas.API.Controllers
           {
               return NotFound();
           }
-            return await _context.FactTipoPago.ToListAsync();
+            // return await _context.FactTipoPago.ToListAsync();
+            //Incluir Clientes, FacturaCabeceras, detalleFacturas
+            return await _context.FactTipoPago.Include(x => x.FacturaCabeceras).Include(x => x.Clientes).ToListAsync();
+
+
+
         }
 
         // GET: api/FactTipoPagos/5
@@ -39,7 +44,15 @@ namespace Facturas.API.Controllers
           {
               return NotFound();
           }
+
             var factTipoPago = await _context.FactTipoPago.FindAsync(id);
+            //Incluir Clientes, FacturaCabeceras, detalleFacturas
+            var FactTipoPago = _context.FactTipoPago.
+                Include(x => x.FacturaCabeceras).
+                Include(x => x.Clientes).
+                FirstOrDefault(x => x.IdTipoPago == id);
+
+
 
             if (factTipoPago == null)
             {

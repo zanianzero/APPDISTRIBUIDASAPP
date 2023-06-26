@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoFacturacion", "ProyectoFacturacion.csproj", "{574AA9E8-00E7-40BC-B52C-8D28FD89B36A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoFacturacion", "ProyectoFacturacion.csproj", "{574AA9E8-00E7-40BC-B52C-8D28FD89B36A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facturas.API", "..\Facturas.API\Facturas.API.csproj", "{E5330903-F396-4900-A5E1-EA53028555C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facturas.API", "..\Facturas.API\Facturas.API.csproj", "{E5330903-F396-4900-A5E1-EA53028555C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

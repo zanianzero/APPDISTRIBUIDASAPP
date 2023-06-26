@@ -28,7 +28,13 @@ namespace Facturas.API.Controllers
           {
               return NotFound();
           }
-            return await _context.FactFacturaCabecera.ToListAsync();
+           // return await _context.FactFacturaCabecera.ToListAsync();
+           //incluir el Cliente, DetalleFactura, TipoPago
+           return await _context.FactFacturaCabecera.Include(x => x.Cliente).Include(x => x.DetallesFactura).Include(x => x.TipoPago).ToListAsync();
+
+
+
+
         }
 
         // GET: api/FactFacturaCabeceras/5
