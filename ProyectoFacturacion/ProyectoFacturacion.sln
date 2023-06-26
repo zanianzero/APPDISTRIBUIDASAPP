@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoFacturacion", "Proy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facturas.API", "..\Facturas.API\Facturas.API.csproj", "{E5330903-F396-4900-A5E1-EA53028555C6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facturacion.UAPI", "..\Facturacion.UAPI\Facturacion.UAPI.csproj", "{450EECE0-6883-4896-B39D-98BFC7B17173}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facturacion.WebMVC", "..\Facturacion.WebMVC\Facturacion.WebMVC.csproj", "{3C541318-B45B-4341-A671-4EEA559D8EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{E5330903-F396-4900-A5E1-EA53028555C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5330903-F396-4900-A5E1-EA53028555C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5330903-F396-4900-A5E1-EA53028555C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450EECE0-6883-4896-B39D-98BFC7B17173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450EECE0-6883-4896-B39D-98BFC7B17173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450EECE0-6883-4896-B39D-98BFC7B17173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450EECE0-6883-4896-B39D-98BFC7B17173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C541318-B45B-4341-A671-4EEA559D8EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C541318-B45B-4341-A671-4EEA559D8EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C541318-B45B-4341-A671-4EEA559D8EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C541318-B45B-4341-A671-4EEA559D8EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

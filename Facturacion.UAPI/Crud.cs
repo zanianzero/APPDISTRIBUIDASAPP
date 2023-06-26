@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System;
+using System.Data;
+using System.Net;
+
 
 namespace Facturacion.UAPI
 {
@@ -27,6 +30,7 @@ namespace Facturacion.UAPI
             }
         }
 
+
         public T SelectByID(string Url, string id)
         {
 
@@ -41,7 +45,6 @@ namespace Facturacion.UAPI
                     var data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
                     return data;
 
-
                 }
             }
             catch (WebException ex)
@@ -53,9 +56,9 @@ namespace Facturacion.UAPI
 
 
 
-        public void Udate(string Url, T data, string id)
+        public void Update(string Url, string id, T data)
         {
-
+            try
             {
 
                 using (var api = new webClient())
@@ -64,80 +67,69 @@ namespace Facturacion.UAPI
                     var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
                     api.UploadString(Url + "/" + id, "PUT", json);
                 }
-                try
-            }
-                catch (WebException ex)
-                {
-                    throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
-                }
 
             }
-
-            public T Insert(string Url, T data)
+            catch (WebException ex)
             {
-
-
-
-                try
-                {
-                    using (var api = new webClient())
-                    {
-                        api.headers.add("content-type", "application/json");
-                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
-                        json = api.UploadString(Url, "POST", json);
-                        data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
-                        return data;
-                    }
-
-
-                }
-                catch (WebException ex)
-                {
-                    throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
-                }
-
-
-
-
-
-
-
+                throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
 
             }
-
-            public void Delete(string Url, string id)
-            {
-                //trycatch al momento de borrar
-                try
-                {
-                    using (var api = new webClient())
-                    {
-                        api.headers.add("content-type", "application/json");
-                        api.UploadString(Url + "/" + id, "DELETE", "");
-                    }
-
-                }
-                catch (WebException ex)
-                {
-                    throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
-                }
-            }
-
-
-
-
-
-
-
 
         }
+
+        public T Insert(string Url, T data)
+        {
+            try
+            {
+                using (var api = new webClient())
+                {
+                    api.headers.add("content-type", "application/json");
+                    var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+                    json = api.UploadString(Url, "POST", json);
+                    data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+                    return data;
+                }
+
+
+            }
+            catch (WebException ex)
+            {
+                throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
+
+            }
+        }
+
+        public void Delete(string Url, string id)
+        {
+            //trycatch al momento de borrar
+            try
+            {
+                using (var api = new webClient())
+                {
+                    api.headers.add("content-type", "application/json");
+                    api.UploadString(Url + "/" + id, "DELETE", "");
+                }
+
+            }
+            catch (WebException ex)
+            {
+                throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
+
+            }
+        }
+
+
+
+
+
+
+
 
     }
 
 }
+
+
 
 
 
