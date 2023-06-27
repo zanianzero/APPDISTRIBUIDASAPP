@@ -70,6 +70,7 @@ namespace Facturacion.UAPI
                     var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
                     json = api.UploadString(Url, "POST", json);
                     data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+
                     return data;
                 }
             }
