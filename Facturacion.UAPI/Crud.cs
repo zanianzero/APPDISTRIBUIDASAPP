@@ -9,124 +9,93 @@ namespace Facturacion.UAPI
     {
         public T[] Select(string Url)
         {
-
             try
             {
-                using (var api = new webClient())
+                using (var api = new WebClient())
                 {
-                    api.headers.add("content-type", "application/json");
-                    var json = api.Downloadstring(Url);
+                    api.Headers.Add("Content-Type", "application/json");
+                    var json = api.DownloadString(Url);
                     var data = Newtonsoft.Json.JsonConvert.DeserializeObject<T[]>(json);
                     return data;
-
-
                 }
-
             }
-            catch (WebException ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
             }
         }
 
-
-        public T SelectByID(string Url, string id)
+        public T Select_ById(string Url, string id)
         {
-
             try
             {
-
-                //por id
-                using (var api = new webClient())
+                using (var api = new WebClient())
                 {
-                    api.headers.add("content-type", "application/json");
-                    var json = api.Downloadstring(Url + "/id" + id);
+                    api.Headers.Add("Content-Type", "application/json");
+                    var json = api.DownloadString(Url + "/" + id);
                     var data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
                     return data;
-
                 }
             }
-            catch (WebException ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
             }
         }
-
-
 
         public void Update(string Url, string id, T data)
         {
             try
             {
-
-                using (var api = new webClient())
+                using (var api = new WebClient())
                 {
-                    api.headers.add("content-type", "application/json");
+                    api.Headers.Add("Content-Type", "application/json");
                     var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
                     api.UploadString(Url + "/" + id, "PUT", json);
                 }
-
             }
-            catch (WebException ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
             }
-
         }
 
         public T Insert(string Url, T data)
         {
             try
             {
-                using (var api = new webClient())
+                using (var api = new WebClient())
                 {
-                    api.headers.add("content-type", "application/json");
+                    api.Headers.Add("Content-Type", "application/json");
                     var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
                     json = api.UploadString(Url, "POST", json);
                     data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
                     return data;
                 }
-
-
             }
-            catch (WebException ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
             }
         }
 
         public void Delete(string Url, string id)
         {
-            //trycatch al momento de borrar
             try
             {
-                using (var api = new webClient())
+                using (var api = new WebClient())
                 {
-                    api.headers.add("content-type", "application/json");
+                    api.Headers.Add("Content-Type", "application/json");
                     api.UploadString(Url + "/" + id, "DELETE", "");
                 }
-
             }
-            catch (WebException ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ha sucedido un error inesperado (" + ex.Message + ")");
-
             }
         }
 
-
-
-
-
-
-
-
     }
-
 }
 
 

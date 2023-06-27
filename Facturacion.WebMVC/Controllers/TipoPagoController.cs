@@ -10,7 +10,7 @@ namespace Facturacion.WebMVC.Controllers
     {
         private string Url = "https://localhost:7161/api/FactTipoPagos";
 
-        private Crud<FactTipoPago> crud { get; set; };  
+        private Crud<FactTipoPago> crud { get; set; }
         public TipoPagoController()
         {
             crud = new Crud<FactTipoPago>();
@@ -30,7 +30,7 @@ namespace Facturacion.WebMVC.Controllers
         // GET: TipoPagoController/Details/5
         public ActionResult Details(int id)
         {
-            var datos = crud.SelectByID(Url, id.ToString());
+            var datos = crud.Select_ById(Url, id.ToString());
             return View(datos);
         }
          
@@ -59,7 +59,7 @@ namespace Facturacion.WebMVC.Controllers
         // GET: TipoPagoController/Edit/5
         public ActionResult Edit(int id)
         {
-            var datos = crud.SelectByID(Url, id.ToString());
+            var datos = crud.Select_ById(Url, id.ToString());
             return View();
         }
 
@@ -82,7 +82,7 @@ namespace Facturacion.WebMVC.Controllers
         // GET: TipoPagoController/Delete/5
         public ActionResult Delete(int id)
         {
-            var datos = crud.SelectByID(Url, id.ToString());
+            var datos = crud.Select_ById(Url, id.ToString());
             return View(datos);
         }
 
