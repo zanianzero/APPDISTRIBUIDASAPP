@@ -9,7 +9,7 @@ namespace Facturacion.WebMVC.Controllers
     public class DetalleFacturaController : Controller
     {
        
-        private string Url = "https://localhost:7161/api/FactDetalleFacturas";
+        private string Url = "https://facturasapi20230628183435.azurewebsites.net/api/FactDetalleFacturas";
 
         private Crud<FactDetalleFactura> crud { get; set; }
         public DetalleFacturaController()
