@@ -1,20 +1,38 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Facturacion.UAPI;
+using Microsoft.AspNetCore.JsonPatch.Internal;
+using ProyectoFacturacion;
 
 namespace Facturacion.WebMVC.Controllers
 {
     public class FactFacturaCabeceraController : Controller
     {
+        
+        private string Url = "https://localhost:7161/api/FactFacturaCabeceras";
+
+        private Crud<FactFacturaCabecera> crud { get; set; }
+        public FactFacturaCabeceraController()
+        {
+            crud = new Crud<FactFacturaCabecera>();
+        }
+
+
+
         // GET: FactFacturaCabeceraController
         public ActionResult Index()
         {
-            return View();
+            //lista de tipos de factura cabecera   
+            var datos = crud.Select(Url);
+            return View(datos);
+
         }
 
         // GET: FactFacturaCabeceraController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var datos = crud.Select_ById(Url, id.ToString());
+            return View(datos);
         }
 
         // GET: FactFacturaCabeceraController/Create
@@ -26,57 +44,62 @@ namespace Facturacion.WebMVC.Controllers
         // POST: FactFacturaCabeceraController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(FactFacturaCabecera datos)
         {
             try
             {
+                crud.Insert(Url, datos);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(datos);
             }
         }
 
         // GET: FactFacturaCabeceraController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var datos = crud.Select_ById(Url, id.ToString());
+            return View(datos);
         }
 
         // POST: FactFacturaCabeceraController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, FactFacturaCabecera datos)
         {
             try
             {
+                crud.Update(Url, id.ToString(), datos);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(datos);
             }
         }
 
         // GET: FactFacturaCabeceraController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var datos = crud.Select_ById(Url, id.ToString());
+            return View(datos);
         }
 
         // POST: FactFacturaCabeceraController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, FactFacturaCabecera datos)
         {
             try
             {
+                crud.Delete(Url, id.ToString());
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(datos);
             }
         }
     }
