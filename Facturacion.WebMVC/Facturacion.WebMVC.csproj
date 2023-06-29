@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\tipopago\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.aspnetcore.Mvc.NewtonsoftJson" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">

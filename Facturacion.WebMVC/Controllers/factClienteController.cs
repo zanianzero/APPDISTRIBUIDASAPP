@@ -6,67 +6,68 @@ using ProyectoFacturacion;
 
 namespace Facturacion.WebMVC.Controllers
 {
-    public class TipoPagoController : Controller
+    public class factClienteController : Controller
     {
-        private string Url = "https://localhost:7161/api/FactTipoPagos";
 
-        private Crud<FactTipoPago> crud { get; set; }
-        public TipoPagoController()
+
+        private string Url = "https://localhost:7161/api/FactClientes";
+
+        private Crud<FactCliente> crud { get; set; }
+        public factClienteController()
         {
-            crud = new Crud<FactTipoPago>();
+            crud = new Crud<FactCliente>();
         }
 
 
 
-        // GET: TipoPagoController
+        // GET: factClienteController
         public ActionResult Index()
         {
-            //lsita de tipos de pago
-            var datos= crud.Select(Url);
+            //lista de tipos de factura cabecera
+            var datos = crud.Select(Url);
             return View(datos);
-          
         }
 
-        // GET: TipoPagoController/Details/5
+        // GET: factClienteController/Details/5
         public ActionResult Details(int id)
         {
             var datos = crud.Select_ById(Url, id.ToString());
-            return View(datos);
+            return View();
         }
-         
-        // GET: TipoPagoController/Create
+
+        // GET: factClienteController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TipoPagoController/Create
+        // POST: factClienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(FactTipoPago datos)
+        public ActionResult Create(FactCliente datos)
         {
             try
             {
-                crud.Insert(Url, datos);  
+                crud.Insert(Url, datos);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(datos);
+                return View();
             }
         }
 
-        // GET: TipoPagoController/Edit/5
+        // GET: factClienteController/Edit/5
         public ActionResult Edit(int id)
         {
             var datos = crud.Select_ById(Url, id.ToString());
-            return View(datos);
+            return View();
         }
 
-        // POST: TipoPagoController/Edit/5
+        // POST: factClienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, FactTipoPago datos)
+        public ActionResult Edit(int id, FactCliente datos)
         {
             try
             {
@@ -75,30 +76,30 @@ namespace Facturacion.WebMVC.Controllers
             }
             catch
             {
-                return View(datos);
+                return View();
             }
         }
 
-        // GET: TipoPagoController/Delete/5
+        // GET: factClienteController/Delete/5
         public ActionResult Delete(int id)
         {
             var datos = crud.Select_ById(Url, id.ToString());
-            return View(datos);
+            return View();
         }
 
-        // POST: TipoPagoController/Delete/5
+        // POST: factClienteController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FactTipoPago datos)
+        public ActionResult Delete(int id, FactCliente datos)
         {
             try
             {
-                crud.Delete(Url, id.ToString());
+                crud.Delete(Url, id.ToString());    
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(datos);
+                return View();
             }
         }
     }

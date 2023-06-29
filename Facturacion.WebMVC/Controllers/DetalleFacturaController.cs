@@ -6,48 +6,48 @@ using ProyectoFacturacion;
 
 namespace Facturacion.WebMVC.Controllers
 {
-    public class TipoPagoController : Controller
+    public class DetalleFacturaController : Controller
     {
-        private string Url = "https://localhost:7161/api/FactTipoPagos";
+       
+        private string Url = "https://localhost:7161/api/FactDetalleFacturas";
 
-        private Crud<FactTipoPago> crud { get; set; }
-        public TipoPagoController()
+        private Crud<FactDetalleFactura> crud { get; set; }
+        public DetalleFacturaController()
         {
-            crud = new Crud<FactTipoPago>();
+            crud = new Crud<FactDetalleFactura>();
         }
 
 
-
-        // GET: TipoPagoController
+        // GET: DetalleFacturaController
         public ActionResult Index()
         {
-            //lsita de tipos de pago
-            var datos= crud.Select(Url);
+            //lista de tipos de detalle factura
+            var datos = crud.Select(Url);
+
             return View(datos);
-          
         }
 
-        // GET: TipoPagoController/Details/5
+        // GET: DetalleFacturaController/Details/5
         public ActionResult Details(int id)
         {
             var datos = crud.Select_ById(Url, id.ToString());
             return View(datos);
         }
-         
-        // GET: TipoPagoController/Create
+
+        // GET: DetalleFacturaController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TipoPagoController/Create
+        // POST: DetalleFacturaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(FactTipoPago datos)
+        public ActionResult Create(FactDetalleFactura datos)
         {
             try
             {
-                crud.Insert(Url, datos);  
+                crud.Insert(Url, datos);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -56,17 +56,17 @@ namespace Facturacion.WebMVC.Controllers
             }
         }
 
-        // GET: TipoPagoController/Edit/5
+        // GET: DetalleFacturaController/Edit/5
         public ActionResult Edit(int id)
         {
             var datos = crud.Select_ById(Url, id.ToString());
-            return View(datos);
+            return View();
         }
 
-        // POST: TipoPagoController/Edit/5
+        // POST: DetalleFacturaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, FactTipoPago datos)
+        public ActionResult Edit(int id, FactDetalleFactura datos)
         {
             try
             {
@@ -79,17 +79,17 @@ namespace Facturacion.WebMVC.Controllers
             }
         }
 
-        // GET: TipoPagoController/Delete/5
+        // GET: DetalleFacturaController/Delete/5
         public ActionResult Delete(int id)
         {
             var datos = crud.Select_ById(Url, id.ToString());
-            return View(datos);
+            return View();
         }
 
-        // POST: TipoPagoController/Delete/5
+        // POST: DetalleFacturaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FactTipoPago datos)
+        public ActionResult Delete(int id, FactDetalleFactura datos)
         {
             try
             {
