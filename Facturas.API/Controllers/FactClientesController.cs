@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace Facturas.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("enableCors")]
     public class FactClientesController : ControllerBase
     {
         private readonly DataContext _context;
