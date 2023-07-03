@@ -10,7 +10,7 @@ namespace Facturacion.WebMVC.Controllers
     {
 
 
-        private string Url = "https://facturasapi20230628183435.azurewebsites.net/api/FactClientes";
+        private string Url = "https://facturasapi20230703113608.azurewebsites.net/api/FactClientes";
 
         private Crud<FactCliente> crud { get; set; }
         public factClienteController()
