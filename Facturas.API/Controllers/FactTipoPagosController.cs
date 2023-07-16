@@ -31,6 +31,8 @@ namespace Facturas.API.Controllers
           {
               return NotFound();
           }
+            // Configurar la cabecera CORS en la respuesta
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             // return await _context.FactTipoPago.ToListAsync();
             //Incluir Clientes, FacturaCabeceras, detalleFacturas
             return await _context.FactTipoPago.Include(x => x.FacturaCabeceras).Include(x => x.Clientes).ToListAsync();
@@ -61,6 +63,8 @@ namespace Facturas.API.Controllers
             {
                 return NotFound();
             }
+            // Configurar la cabecera CORS en la respuesta
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             return factTipoPago;
         }

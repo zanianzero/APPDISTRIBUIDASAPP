@@ -31,8 +31,12 @@ namespace Facturas.API.Controllers
               return NotFound();
           }
 
+            // Configurar la cabecera CORS en la respuesta
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             ///incluir  el TipoPago  return
-            return await _context.FactCliente.Include(x => x.FacturaCabeceras).Include(x => x.TipoPago).ToListAsync();
+            //return await _context.FactCliente.Include(x => x.FacturaCabeceras).Include(x => x.TipoPago).ToListAsync();
+            //tambien desplegar la cabecera de cada factura
+            return await _context.FactCliente.Include(x => x.FacturaCabeceras).ThenInclude(x => x.DetallesFactura).ToListAsync();
 
 
 
@@ -46,13 +50,19 @@ namespace Facturas.API.Controllers
           {
               return NotFound();
           }
-            var factCliente = await _context.FactCliente.FindAsync(id);
+            //var factCliente = await _context.FactCliente.FindAsync(id);
+            //tambien desplegar la cabecera en cada factura
+            var factCliente = await _context.FactCliente.Include(x => x.FacturaCabeceras).ThenInclude(x => x.DetallesFactura).FirstOrDefaultAsync(x => x.Identificacion == id);
+
+
 
             if (factCliente == null)
             {
                 return NotFound();
             }
 
+            // Configurar la cabecera CORS en la respuesta
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return factCliente;
         }
 
