@@ -69,6 +69,7 @@ namespace Facturas.API.Controllers
             if (id != factFacturaCabecera.IdFacturaCabecera)
             {
                 return BadRequest();
+
             }
 
             _context.Entry(factFacturaCabecera).State = EntityState.Modified;
